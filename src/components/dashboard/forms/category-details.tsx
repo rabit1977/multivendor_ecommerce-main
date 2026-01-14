@@ -44,6 +44,7 @@ import { upsertCategory } from '@/queries/category';
 import { useToast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { v4 } from 'uuid';
+import slugify from 'slugify';
 
 interface CategoryDetailsProps {
   data?: Category;
@@ -66,6 +67,16 @@ const CategoryDetails: FC<CategoryDetailsProps> = ({ data }) => {
       featured: data?.featured || false,
     },
   });
+
+  const nameValue = form.watch('name');
+
+  useEffect(() => {
+    if (nameValue) {
+      const slug = slugify(nameValue, { lower: true, trim: true });
+      form.setValue('url', slug, { shouldValidate: true });
+    }
+  }, [nameValue, form]);
+
 
   // Loading status based on form submission
   const isLoading = form.formState.isSubmitting;

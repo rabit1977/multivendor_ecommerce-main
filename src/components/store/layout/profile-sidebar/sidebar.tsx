@@ -1,35 +1,35 @@
-"use client";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+'use client';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function ProfileSidebar() {
   const pathname = usePathname();
-  const path = pathname.split("/profile/")[1];
-  const path_trim = path ? path.split("/")[0] : null;
+  const path = pathname.split('/profile/')[1];
+  const path_trim = path ? path.split('/')[0] : null;
   return (
     <div>
-      <div className="w-full p-4 text-xs text-[#999]">
+      <div className='w-full p-4 text-xs text-[#999] dark:text-slate-400 flex items-center justify-between dark:bg-slate-800 bg-[#f5f5f5] mb-4'>
         <span>
-          <Link href="/">Home</Link>
-          <span className="mx-2">&gt;</span>
+          <Link href='/'>Home</Link>
+          <span className='mx-2'>&gt;</span>
         </span>
         <span>
-          <Link href="/profile">Account</Link>
-          {pathname !== "/profile" && <span className="mx-2">&gt;</span>}
+          <Link href='/profile'>Account</Link>
+          {pathname !== '/profile' && <span className='mx-2'>&gt;</span>}
         </span>
         {path && (
           <span>
-            <Link href={pathname} className="capitalize">
+            <Link href={pathname} className='capitalize'>
               {path_trim || path}
             </Link>
           </span>
         )}
       </div>
-      <div className="bg-white">
-        <div className="py-3 inline-block w-[296px] min-h-72 mr-6">
-          <div className="font-bold text-main-primary flex h-9 items-center px-4">
-            <div className="whitespace-nowrap overflow-ellipsis overflow-hidden">
+      <div className='bg-white dark:bg-slate-800'>
+        <div className='py-3 inline-block w-[296px] min-h-72 mr-6'>
+          <div className='font-bold text-main-primary dark:text-white flex h-9 items-center px-4'>
+            <div className='whitespace-nowrap overflow-ellipsis overflow-hidden'>
               Account
             </div>
           </div>
@@ -38,13 +38,13 @@ export default function ProfileSidebar() {
             <Link key={item.link} href={item.link}>
               <div
                 className={cn(
-                  "relative flex h-9 items-center text-sm px-4 cursor-pointer hover:bg-[#f5f5f5]",
+                  'relative flex h-9 items-center text-sm px-4 cursor-pointer dark:hover:bg-slate-700 hover:bg-[#f5f5f5]',
                   {
-                    "bg-[#f5f5f5] user-menu-item":
+                    'bg-[#f5f5f5] dark:bg-slate-700 user-menu-item':
                       item.link &&
                       (pathname === item.link ||
                         (pathname.startsWith(item.link) &&
-                          item.link !== "/profile")),
+                          item.link !== '/profile')),
                   }
                 )}
               >
@@ -60,35 +60,35 @@ export default function ProfileSidebar() {
 
 const menu = [
   {
-    title: "Overview",
-    link: "/profile",
+    title: 'Overview',
+    link: '/profile',
   },
   {
-    title: "Orders",
-    link: "/profile/orders",
+    title: 'Orders',
+    link: '/profile/orders',
   },
   {
-    title: "Payment",
-    link: "/profile/payment",
+    title: 'Payment',
+    link: '/profile/payment',
   },
   {
-    title: "Shipping address",
-    link: "/profile/addresses",
+    title: 'Shipping address',
+    link: '/profile/addresses',
   },
   {
-    title: "Reviews",
-    link: "/profile/reviews",
+    title: 'Reviews',
+    link: '/profile/reviews',
   },
   {
-    title: "History",
-    link: "/profile/history/1",
+    title: 'History',
+    link: '/profile/history/1',
   },
   {
-    title: "Wishlist",
-    link: "/profile/wishlist/1",
+    title: 'Wishlist',
+    link: '/profile/wishlist/1',
   },
   {
-    title: "Following",
-    link: "/profile/following/1",
+    title: 'Following',
+    link: '/profile/following/1',
   },
 ];

@@ -1,37 +1,37 @@
-import { currentUser } from "@clerk/nextjs/server";
-import { Eye, Heart, Puzzle, Rss, WalletCards } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { currentUser } from '@clerk/nextjs/server';
+import { Eye, Heart, Puzzle, Rss, WalletCards } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function ProfileOverview() {
   const user = await currentUser();
   if (!user) return;
   return (
-    <div className="w-full bg-red-500">
-      <div className="bg-white p-4 border shadow-sm">
-        <div className="flex items-center">
+    <div className='w-full bg-red-500'>
+      <div className='bg-white dark:bg-slate-800 p-4 border shadow-sm'>
+        <div className='flex items-center'>
           <Image
             src={user.imageUrl}
             alt={user.fullName!}
             width={200}
             height={200}
-            className="w-14 h-14 rounded-full object-cover"
+            className='w-14 h-14 rounded-full object-cover'
           />
-          <div className="flex-1 ml-4 text-main-primary text-xl font-bold capitalize ">
+          <div className='flex-1 ml-4 text-main-primary dark:text-white text-xl font-bold capitalize '>
             {user.fullName?.toLowerCase()}
           </div>
         </div>
-        <div className="mt-4 flex flex-wrap py-4">
+        <div className='mt-4 flex flex-wrap py-4'>
           {menu.map((item) => (
             <Link
               key={item.link}
               href={item.link}
-              className="w-36 relative flex flex-col items-center justify-center cursor-pointer"
+              className='w-36 relative flex flex-col items-center justify-center cursor-pointer'
             >
-              <div className="text-3xl">
+              <div className='text-3xl'>
                 <span>{item.icon}</span>
               </div>
-              <div className="mt-2">{item.title}</div>
+              <div className='mt-2'>{item.title}</div>
             </Link>
           ))}
         </div>
@@ -42,28 +42,28 @@ export default async function ProfileOverview() {
 
 const menu = [
   {
-    title: "Wishlist",
+    title: 'Wishlist',
     icon: <Heart />,
-    link: "/profile/wishlist",
+    link: '/profile/wishlist',
   },
   {
-    title: "Following",
+    title: 'Following',
     icon: <Rss />,
-    link: "/profile/following/1",
+    link: '/profile/following/1',
   },
   {
-    title: "Viewed",
+    title: 'Viewed',
     icon: <Eye />,
-    link: "/profile/history/1",
+    link: '/profile/history/1',
   },
   {
-    title: "Coupons",
+    title: 'Coupons',
     icon: <Puzzle />,
-    link: "/profile/coupons",
+    link: '/profile/coupons',
   },
   {
-    title: "Shopping credit",
+    title: 'Shopping credit',
     icon: <WalletCards />,
-    link: "/profile/credit",
+    link: '/profile/credit',
   },
 ];

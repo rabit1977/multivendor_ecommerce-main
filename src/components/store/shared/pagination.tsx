@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
-import { MoveLeft, MoveRight } from "lucide-react";
-import { Dispatch, FC, SetStateAction } from "react";
+import { cn } from '@/lib/utils';
+import { MoveLeft, MoveRight } from 'lucide-react';
+import { Dispatch, FC, SetStateAction } from 'react';
 
 interface Props {
   page: number;
@@ -21,23 +21,23 @@ const Pagination: FC<Props> = ({ page, setPage, totalPages }) => {
     }
   };
   return (
-    <div className="w-full py-0 lg:px-0 sm:px-6 px-4">
-      <div className="w-full flex items-center justify-end gap-x-4 border-t border-gray-200">
+    <div className='w-full py-0 lg:px-0 sm:px-6 px-4'>
+      <div className='w-full flex items-center justify-end gap-x-4 border-t border-gray-200'>
         <div
           onClick={() => handlePrevious()}
-          className="flex items-center pt-3 text-gray-600 hover:text-orange-background cursor-pointer"
+          className='flex items-center pt-3 text-gray-600 dark:text-white hover:text-orange-background cursor-pointer'
         >
-          <MoveLeft className="w-3" />
-          <p className="text-sm ml-3 font-medium leading-none">Previous</p>
+          <MoveLeft className='w-3' />
+          <p className='text-sm ml-3 font-medium leading-none'>Previous</p>
         </div>
-        <div className="flex flex-wrap">
+        <div className='flex flex-wrap'>
           {Array.from({ length: totalPages }).map((_, i) => (
             <span
               key={i}
               className={cn(
-                "text-sm font-medium leading-none cursor-pointer text-gray-600  hover:text-orange-background  border-t border-transparent pt-3 mr-4 px-2",
+                'text-sm font-medium leading-none cursor-pointer text-gray-600  hover:text-orange-background  border-t border-transparent pt-3 mr-4 px-2',
                 {
-                  "text-orange-background border-orange-background":
+                  'text-orange-background border-orange-background':
                     i + 1 === page,
                 }
               )}
@@ -49,10 +49,10 @@ const Pagination: FC<Props> = ({ page, setPage, totalPages }) => {
         </div>
         <div
           onClick={() => handleNext()}
-          className="flex items-center pt-3 text-gray-600 hover:text-orange-background cursor-pointer"
+          className='flex items-center pt-3 text-gray-600 dark:text-white  hover:text-orange-background cursor-pointer'
         >
-          <p className="text-sm font-medium leading-none mr-3">Next</p>
-          <MoveRight className="w-3" />
+          <p className='text-sm font-medium leading-none mr-3'>Next</p>
+          <MoveRight className='w-3' />
         </div>
       </div>
     </div>
